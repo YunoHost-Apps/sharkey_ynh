@@ -60,8 +60,8 @@ ynh_add_nginx_config
 ynh_script_progression --message="Building app..."
 
 pushd "$install_dir"
-	git checkout stable
-	git pull --recurse-submodules
+	ynh_exec_warn_less git checkout stable
+	ynh_exec_warn_less git pull --recurse-submodules
     ynh_use_nodejs
     ynh_exec_warn_less ynh_exec_as $app env $ynh_node_load_PATH pnpm cleanall
 	ynh_exec_warn_less ynh_exec_as $app env $ynh_node_load_PATH pnpm install --frozen-lockfile
