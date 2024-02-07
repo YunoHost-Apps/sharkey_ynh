@@ -20,6 +20,11 @@ Misskey is a decentralized microblogging platform. Since it exists within the Fe
 
 
 **Shipped version:** 2023.12.0~ynh1
+
+## Screenshots
+
+![Screenshot of Sharkey](./doc/screenshots/screenshot-desktop.png)
+
 ## Documentation and resources
 
 * Official app website: <https://git.joinsharkey.org/Sharkey>

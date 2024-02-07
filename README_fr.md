@@ -19,6 +19,11 @@ Si vous n’avez pas YunoHost, regardez [ici](https://yunohost.org/#/install) po
 Misskey est une plateforme de microblogging décentralisée. Puisqu'il existe au sein du Fediverse (un univers où diverses plateformes de médias sociaux sont organisées), il est mutuellement lié à d'autres plateformes de médias sociaux.
 
 **Version incluse :** 2023.12.0~ynh1
+
+## Captures d’écran
+
+![Capture d’écran de Sharkey](./doc/screenshots/screenshot-desktop.png)
+
 ## Documentations et ressources
 
 * Site officiel de l’app : <https://git.joinsharkey.org/Sharkey>
