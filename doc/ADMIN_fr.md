@@ -1,3 +1,16 @@
-Ceci est une fausse doc d'admin pour cette app
+### Points importants à lire avant l'installation
 
-Le dossier d'install de l'app est `__INSTALL_DIR__`
+- Le premier compte créé sera un utilisateur administrateur et disposera de tous les droits d'administrateur.
+
+Utiliser *screen* en cas de déconnexion
+
+``` 
+sudo apt-get install screen
+screen
+sudo yunohost app install https://github.com/YunoHost-Apps/misskey_ynh.git
+```
+Récupérer après déconnexion :
+```
+screen -d
+screen -r
+```
