@@ -1,3 +1,3 @@
-Ceci est une fausse doc d'admin pour cette app
+### Points importants à lire avant l'installation ⚠️
 
-Le dossier d'install de l'app est `__INSTALL_DIR__`
+- Le premier compte créé sera un utilisateur administrateur et disposera de tous les droits d'administrateur. 👨‍💻

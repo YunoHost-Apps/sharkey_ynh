@@ -1,3 +1,3 @@
-This is a dummy admin doc for this app
+### Important points to read before installing ⚠️
 
-The app install dir is `__INSTALL_DIR__`
+- The first account created will be an admin user and will have all the admin rights. 👨‍💻

@@ -1,5 +1,5 @@
 [Unit]
-Description=Small description of the service
+Description=Sharkey: microblogging platform
 After=network.target
 
 [Service]
@@ -7,9 +7,12 @@ Type=simple
 User=__APP__
 Group=__APP__
 WorkingDirectory=__INSTALL_DIR__/
-ExecStart=__INSTALL_DIR__/script
-StandardOutput=append:/var/log/__APP__/__APP__.log
-StandardError=inherit
+Environment="__YNH_NODE_LOAD_PATH__"
+Environment="NODE_OPTIONS=--max-old-space-size=8192"
+Environment="NODE_ENV=production"
+ExecStart=__YNH_NPM__ start
+TimeoutSec=60
+Restart=always
 
 ### Depending on specificities of your service/app, you may need to tweak these
 ### .. but this should be a good baseline
