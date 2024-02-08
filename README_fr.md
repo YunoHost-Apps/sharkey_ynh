@@ -16,7 +16,8 @@ Si vous n’avez pas YunoHost, regardez [ici](https://yunohost.org/#/install) po
 
 ## Vue d’ensemble
 
-Sharkey est une plateforme de microblogging décentralisée. Puisqu'il existe au sein du Fediverse (un univers où diverses plateformes de médias sociaux sont organisées), il est mutuellement lié à d'autres plateformes de médias sociaux.
+🌎 Une plateforme de microblogging 🦈🚀
+Sharkey est un fork de Misskey qui suit les changements en amont lorsque c'est possible, avec des fonctionnalités supplémentaires !
 
 **Version incluse :** 2023.12.0~ynh1
 
