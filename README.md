@@ -16,7 +16,8 @@ If you don't have YunoHost, please consult [the guide](https://yunohost.org/#/in
 
 ## Overview
 
-🌎 A Sharkish microblogging platform 🦈🚀
+🌎 A Sharkish microblogging platform 🦈🚀 
+
 Sharkey is an Misskey fork following upstream changes when possible, with added features!
 
 
