@@ -16,7 +16,8 @@ Si vous n’avez pas YunoHost, regardez [ici](https://yunohost.org/#/install) po
 
 ## Vue d’ensemble
 
-🌎 Une plateforme de microblogging 🦈🚀
+🌎 Une plateforme de microblogging 🦈🚀 
+
 Sharkey est un fork de Misskey qui suit les changements en amont lorsque c'est possible, avec des fonctionnalités supplémentaires !
 
 **Version incluse :** 2023.12.0~ynh1
