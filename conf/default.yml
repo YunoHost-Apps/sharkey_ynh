@@ -27,7 +27,7 @@ url: https://__DOMAIN__/
 #   An encrypted connection with HTTPS is highly recommended
 #   because tokens may be transferred in GET requests.
 
-# The port that your Misskey server should listen on.
+# The port that your Sharkey server should listen on.
 port: __PORT__
 
 #   ┌──────────────────────────┐
