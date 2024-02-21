@@ -22,7 +22,7 @@ Sharkey is an Misskey fork following upstream changes when possible, with added 
 
 
 
-**Shipped version:** 2023.12.0~ynh1
+**Shipped version:** 2023.12.1~ynh1
 
 ## Screenshots
 

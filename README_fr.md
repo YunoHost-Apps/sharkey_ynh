@@ -20,7 +20,7 @@ Si vous n’avez pas YunoHost, regardez [ici](https://yunohost.org/#/install) po
 
 Sharkey est un fork de Misskey qui suit les changements en amont lorsque c'est possible, avec des fonctionnalités supplémentaires !
 
-**Version incluse :** 2023.12.0~ynh1
+**Version incluse :** 2023.12.1~ynh1
 
 ## Captures d’écran
 
