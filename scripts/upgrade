@@ -33,6 +33,10 @@ then
 
 	pushd $install_dir
 		chown -R $app:www-data "$install_dir"
+		ynh_exec_warn_less ynh_exec_as $app git config --global --add safe.directory "$install_dir"
+		ynh_exec_warn_less ynh_exec_as $app git config --global --add safe.directory "$install_dir/fluent-emojis"
+		ynh_exec_warn_less ynh_exec_as $app git config --global --add safe.directory "$install_dir/misskey-assets"
+		ynh_exec_warn_less ynh_exec_as $app git config --global --add safe.directory "$install_dir/tossface-emojis"
 		ynh_exec_warn_less ynh_exec_as $app git checkout stable
 		ynh_exec_warn_less ynh_exec_as $app git pull --recurse-submodules
 	popd
