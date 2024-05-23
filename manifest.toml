@@ -37,8 +37,8 @@ ram.runtime = "50M"
 [resources]
 
     [resources.sources.main]
-    url = "https://activitypub.software/TransFem-org/Sharkey/-/archive/2024.3.1/Sharkey-2024.3.1.tar.gz"
-    sha256 = "b07371c6c7404e907b1d3102b051fa768f6d0d1ecc41d2894899bdfbe78369af"
+    url = "https://activitypub.software/TransFem-org/Sharkey/-/archive/2024.3.3/Sharkey-2024.3.3.tar.gz"
+    sha256 = "7bbe05f762d9dcc55562766c7dcde3c7cb8d3942aac5119ace8d7812da217d3f"
 
     autoupdate.strategy = "latest_gitlab_tag"
 

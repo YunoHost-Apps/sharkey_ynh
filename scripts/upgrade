@@ -64,10 +64,11 @@ ynh_script_progression --message="Building app..."
 
 pushd "$install_dir"
     ynh_use_nodejs
-    ynh_exec_warn_less ynh_exec_as $app env $ynh_node_load_PATH pnpm cleanall
-	ynh_exec_warn_less ynh_exec_as $app env $ynh_node_load_PATH pnpm install --frozen-lockfile
-	ynh_exec_warn_less ynh_exec_as $app env $ynh_node_load_PATH NODE_ENV=production pnpm build
-	ynh_exec_warn_less ynh_exec_as $app env $ynh_node_load_PATH pnpm migrate
+	env $ynh_node_load_PATH corepack enable
+	env $ynh_node_load_PATH COREPACK_ENABLE_DOWNLOAD_PROMPT=0 corepack prepare pnpm@latest --activate
+    ynh_exec_warn_less ynh_exec_as $app env $ynh_node_load_PATH pnpm install --frozen-lockfile
+    ynh_exec_warn_less ynh_exec_as $app env $ynh_node_load_PATH NODE_ENV=production pnpm build
+    ynh_exec_warn_less ynh_exec_as $app env $ynh_node_load_PATH pnpm migrate
 popd
 
 #=================================================
