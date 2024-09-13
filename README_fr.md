@@ -28,7 +28,7 @@ Certaines fonctions ne seront pas disponible si vous installez ce package.
 Je vous conseille d'attendre la sortie de _Bookworm_ Debian 12.
 
 
-**Version incluse :** 2024.5.1~ynh1
+**Version incluse :** 2024.8.1~ynh1
 
 ## Captures d’écran
 

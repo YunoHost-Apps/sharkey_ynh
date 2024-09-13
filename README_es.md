@@ -28,7 +28,7 @@ Some functions will not be available if you install this package.
 I advise you to wait for the release of _Bookworm_ Debian 12.
 
 
-**Versión actual:** 2024.5.1~ynh1
+**Versión actual:** 2024.8.1~ynh1
 
 ## Capturas
 
@@ -43,7 +43,7 @@ I advise you to wait for the release of _Bookworm_ Debian 12.
 
 ## Información para desarrolladores
 
-Por favor enviar sus correcciones a la [`branch testing`](https://github.com/YunoHost-Apps/sharkey_ynh/tree/testing
+Por favor enviar sus correcciones a la [rama `testing`](https://github.com/YunoHost-Apps/sharkey_ynh/tree/testing).
 
 Para probar la rama `testing`, sigue asÍ:
 
