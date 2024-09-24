@@ -5,7 +5,7 @@ name = "Sharkey"
 description.en = "Microblogging platform"
 description.fr = "Platforme de Microblogging"
 
-version = "2024.5.1~ynh1"
+version = "2024.8.2~ynh1"
 
 maintainers = ["oufmilo"]
 
@@ -37,8 +37,8 @@ ram.runtime = "50M"
 [resources]
 
     [resources.sources.main]
-    url = "https://activitypub.software/TransFem-org/Sharkey/-/archive/2024.5.1/Sharkey-2024.5.1.tar.bz2"
-    sha256 = "d86f4027633919a604084c5f55b77e15bd4b317a3fe43ea24cee2dd2dbc9b3ca"
+    url = "https://activitypub.software/TransFem-org/Sharkey/-/archive/2024.8.2/Sharkey-2024.8.2.tar.bz2"
+    sha256 = "e31c71f0e32b586762aa3cd063ada3cd32342f03ad6210b1c80687fc9aac1c2f"
 
     autoupdate.strategy = "latest_gitlab_release"
 
