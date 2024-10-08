@@ -28,7 +28,7 @@ Some functions will not be available if you install this package.
 I advise you to wait for the release of _Bookworm_ Debian 12.
 
 
-**Versi terkirim:** 2024.5.1~ynh1
+**Versi terkirim:** 2024.8.2~ynh1
 
 ## Tangkapan Layar
 
@@ -37,7 +37,7 @@ I advise you to wait for the release of _Bookworm_ Debian 12.
 ## Dokumentasi dan sumber daya
 
 - Website aplikasi resmi: <https://git.joinsharkey.org/Sharkey>
-- Repositori kode aplikasi hulu: <https://activitypub.software/TransFem-org/Sharkey>
+- Depot kode aplikasi hulu: <https://activitypub.software/TransFem-org/Sharkey>
 - Gudang YunoHost: <https://apps.yunohost.org/app/sharkey>
 - Laporkan bug: <https://github.com/YunoHost-Apps/sharkey_ynh/issues>
 
