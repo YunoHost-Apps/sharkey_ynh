@@ -28,7 +28,7 @@ Some functions will not be available if you install this package.
 I advise you to wait for the release of _Bookworm_ Debian 12.
 
 
-**分发版本：** 2024.8.2~ynh1
+**分发版本：** 2024.9.1~ynh1
 
 ## 截图
 
