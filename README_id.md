@@ -28,7 +28,7 @@ Some functions will not be available if you install this package.
 I advise you to wait for the release of _Bookworm_ Debian 12.
 
 
-**Versi terkirim:** 2024.8.2~ynh1
+**Versi terkirim:** 2024.9.1~ynh1
 
 ## Tangkapan Layar
 
