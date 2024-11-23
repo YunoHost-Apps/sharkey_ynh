@@ -40,6 +40,7 @@ ynh_script_progression "Building $app..."
 
 pushd "$install_dir"
 	ynh_hide_warnings corepack enable && corepack prepare pnpm@latest --activate
+	ynh_hide_warnings ynh_exec_as_app COREPACK_ENABLE_DOWNLOAD_PROMPT=0 pnpm install --frozen-lockfile
 	ynh_hide_warnings ynh_exec_as_app NODE_ENV=production pnpm build
 	ynh_hide_warnings ynh_exec_as_app pnpm run init
 popd
