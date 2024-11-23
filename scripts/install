@@ -16,18 +16,11 @@ ynh_nodejs_install
 ynh_script_progression "Setting up source files..."
 
 mkdir -p "$install_dir"
-#REMOVEME? Assuming the install dir is setup using ynh_setup_source, the proper chmod/chowns are now already applied and it shouldn't be necessary to tweak perms | chown -R $app:www-data "$install_dir"
+chown -R $app:www-data "$install_dir"
 ynh_hide_warnings git clone --recurse-submodules -b stable https://activitypub.software/TransFem-org/Sharkey.git "$install_dir"
 
-#REMOVEME? Assuming the install dir is setup using ynh_setup_source, the proper chmod/chowns are now already applied and it shouldn't be necessary to tweak perms | chmod -R o-rwx "$install_dir"
-#REMOVEME? Assuming the install dir is setup using ynh_setup_source, the proper chmod/chowns are now already applied and it shouldn't be necessary to tweak perms | chown -R $app:www-data "$install_dir"
-#=================================================
-# NGINX CONFIGURATION
-#=================================================
-ynh_script_progression "Configuring NGINX web server..."
-
-# Create a dedicated NGINX config
-ynh_config_add_nginx
+chmod -R o-rwx "$install_dir"
+chown -R $app:www-data "$install_dir"
 
 #=================================================
 # ADD A CONFIGURATION
@@ -43,15 +36,14 @@ ynh_config_add --template="default.yml" --destination="$install_dir/.config/defa
 #=================================================
 # BUILD APP
 #=================================================
-ynh_script_progression "Building app..."
+ynh_script_progression "Building $app..."
 
 pushd "$install_dir"
-
 	env node_load_PATH corepack enable
 	env node_load_PATH  corepack prepare pnpm@latest --activate
-	ynh_hide_warnings ynh_exec_as_app node_load_PATH  corepack pnpm install --frozen-lockfile
-	ynh_hide_warnings ynh_exec_as_app node_load_PATH NODE_ENV=production pnpm build
-	ynh_hide_warnings ynh_exec_as_app node_load_PATH pnpm run init
+	ynh_hide_warnings ynh_exec_as_app corepack pnpm install --frozen-lockfile
+	ynh_hide_warnings ynh_exec_as_app NODE_ENV=production pnpm build
+	ynh_hide_warnings ynh_exec_as_app pnpm run init
 popd
 
 #=================================================
@@ -59,21 +51,11 @@ popd
 #=================================================
 ynh_script_progression "Configuring $app's systemd service..."
 
-# Create a dedicated systemd config
+ynh_config_add_nginx
+
 ynh_config_add_systemd
 
-#=================================================
-# SETUP LOGROTATE
-#=================================================
-ynh_script_progression "Configuring log rotation..."
-
-# Use logrotate to manage application logfile(s)
 ynh_config_add_logrotate
-
-#=================================================
-# INTEGRATE SERVICE IN YUNOHOST
-#=================================================
-ynh_script_progression "Integrating service in YunoHost..."
 
 yunohost service add $app --description="A interplanetary blogging platform" --log="/var/log/$app/$app.log"
 
@@ -82,7 +64,6 @@ yunohost service add $app --description="A interplanetary blogging platform" --l
 #=================================================
 ynh_script_progression "Starting $app's systemd service..."
 
-# Start a systemd service
 ynh_systemctl --service=$app --action="start" --log_path=systemd
 
 #=================================================

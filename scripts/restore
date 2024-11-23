@@ -1,6 +1,5 @@
 #!/bin/bash
 
-# Keep this path for calling _common.sh inside the execution's context of backup and restore scripts
 source ../settings/scripts/_common.sh
 source /usr/share/yunohost/helpers
 
@@ -11,16 +10,14 @@ ynh_script_progression "Restoring the app main directory..."
 
 ynh_restore "$install_dir"
 
-#REMOVEME? Assuming the install dir is setup using ynh_setup_source, the proper chmod/chowns are now already applied and it shouldn't be necessary to tweak perms | chmod -R o-rwx "$install_dir"
-#REMOVEME? Assuming the install dir is setup using ynh_setup_source, the proper chmod/chowns are now already applied and it shouldn't be necessary to tweak perms | chown -R $app:www-data "$install_dir"
-#=================================================
-# SPECIFIC RESTORATION
+chmod -R o-rwx "$install_dir"
+chown -R $app:www-data "$install_dir"
+
 #=================================================
 # REINSTALL DEPENDENCIES
 #=================================================
 ynh_script_progression "Reinstalling dependencies..."
 
-# Define and install dependencies
 ynh_nodejs_install
 
 #=================================================
@@ -28,48 +25,31 @@ ynh_nodejs_install
 #=================================================
 ynh_script_progression "Reinstalling PNPM..."
 
-# Define and install pnpm
 pushd "$install_dir"
-
 	env node_load_PATH corepack enable
 	env node_load_PATH  corepack prepare pnpm@latest --activate
-	ynh_hide_warnings ynh_exec_as_app node_load_PATH pnpm install --frozen-lockfile
-	ynh_hide_warnings ynh_exec_as_app node_load_PATH NODE_ENV=production pnpm build
+	ynh_hide_warnings ynh_exec_as_app pnpm install --frozen-lockfile
+	ynh_hide_warnings ynh_exec_as_app NODE_ENV=production pnpm build
 popd
-
-#=================================================
-# RESTORE THE NGINX CONFIGURATION
-#=================================================
-ynh_script_progression "Restoring the NGINX web server configuration..."
-
-ynh_restore "/etc/nginx/conf.d/$domain.d/$app.conf"
 
 #=================================================
 # RESTORE THE POSTGRESQL DATABASE
 #=================================================
 ynh_script_progression "Restoring the PostgreSQL database..."
 
-ynh_psql_db_shell  < "./db.sql""
+ynh_psql_db_shell < ./db.sql
 
 #=================================================
 # RESTORE SYSTEMD
 #=================================================
 ynh_script_progression "Restoring $app's systemd service..."
 
+ynh_restore "/etc/nginx/conf.d/$domain.d/$app.conf"
+
 ynh_restore "/etc/systemd/system/$app.service"
 systemctl enable $app.service --quiet
 
-#=================================================
-# RESTORE THE LOGROTATE CONFIGURATION
-#=================================================
-ynh_script_progression "Restoring the logrotate configuration..."
-
 ynh_restore "/etc/logrotate.d/$app"
-
-#=================================================
-# INTEGRATE SERVICE IN YUNOHOST
-#=================================================
-ynh_script_progression "Integrating service in YunoHost..."
 
 yunohost service add $app --description="A interplanetary blogging platform" --log="/var/log/$app/$app.log"
 
@@ -79,11 +59,6 @@ yunohost service add $app --description="A interplanetary blogging platform" --l
 ynh_script_progression "Starting $app's systemd service..."
 
 ynh_systemctl --service=$app --action="start" --log_path="systemd"
-
-#=================================================
-# RELOAD NGINX
-#=================================================
-ynh_script_progression "Reloading NGINX web server..."
 
 ynh_systemctl --service=nginx --action=reload
 
