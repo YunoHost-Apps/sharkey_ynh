@@ -5,7 +5,9 @@ It shall NOT be edited by hand.
 
 # Sharkey for YunoHost
 
-[![Integration level](https://dash.yunohost.org/integration/sharkey.svg)](https://ci-apps.yunohost.org/ci/apps/sharkey/) ![Working status](https://ci-apps.yunohost.org/ci/badges/sharkey.status.svg) ![Maintenance status](https://ci-apps.yunohost.org/ci/badges/sharkey.maintain.svg)
+[![Integration level](https://apps.yunohost.org/badge/integration/sharkey)](https://ci-apps.yunohost.org/ci/apps/sharkey/)
+![Working status](https://apps.yunohost.org/badge/state/sharkey)
+![Maintenance status](https://apps.yunohost.org/badge/maintained/sharkey)
 
 [![Install Sharkey with YunoHost](https://install-app.yunohost.org/install-with-yunohost.svg)](https://install-app.yunohost.org/?app=sharkey)
 
@@ -28,7 +30,7 @@ Some functions will not be available if you install this package.
 I advise you to wait for the release of _Bookworm_ Debian 12.
 
 
-**Shipped version:** 2024.9.1~ynh1
+**Shipped version:** 2024.9.3~ynh1
 
 ## Screenshots
 
