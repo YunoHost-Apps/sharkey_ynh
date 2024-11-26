@@ -5,7 +5,9 @@ NON debe editarse manualmente.
 
 # Sharkey para YunoHost
 
-[![Nivel de integración](https://dash.yunohost.org/integration/sharkey.svg)](https://ci-apps.yunohost.org/ci/apps/sharkey/) ![Estado de funcionamento](https://ci-apps.yunohost.org/ci/badges/sharkey.status.svg) ![Estado de mantemento](https://ci-apps.yunohost.org/ci/badges/sharkey.maintain.svg)
+[![Nivel de integración](https://apps.yunohost.org/badge/integration/sharkey)](https://ci-apps.yunohost.org/ci/apps/sharkey/)
+![Estado de funcionamento](https://apps.yunohost.org/badge/state/sharkey)
+![Estado de mantemento](https://apps.yunohost.org/badge/maintained/sharkey)
 
 [![Instalar Sharkey con YunoHost](https://install-app.yunohost.org/install-with-yunohost.svg)](https://install-app.yunohost.org/?app=sharkey)
 

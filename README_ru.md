@@ -5,7 +5,9 @@
 
 # Sharkey для YunoHost
 
-[![Уровень интеграции](https://dash.yunohost.org/integration/sharkey.svg)](https://ci-apps.yunohost.org/ci/apps/sharkey/) ![Состояние работы](https://ci-apps.yunohost.org/ci/badges/sharkey.status.svg) ![Состояние сопровождения](https://ci-apps.yunohost.org/ci/badges/sharkey.maintain.svg)
+[![Уровень интеграции](https://apps.yunohost.org/badge/integration/sharkey)](https://ci-apps.yunohost.org/ci/apps/sharkey/)
+![Состояние работы](https://apps.yunohost.org/badge/state/sharkey)
+![Состояние сопровождения](https://apps.yunohost.org/badge/maintained/sharkey)
 
 [![Установите Sharkey с YunoHost](https://install-app.yunohost.org/install-with-yunohost.svg)](https://install-app.yunohost.org/?app=sharkey)
 

@@ -5,7 +5,9 @@ Ini TIDAK boleh diedit dengan tangan.
 
 # Sharkey untuk YunoHost
 
-[![Tingkat integrasi](https://dash.yunohost.org/integration/sharkey.svg)](https://ci-apps.yunohost.org/ci/apps/sharkey/) ![Status kerja](https://ci-apps.yunohost.org/ci/badges/sharkey.status.svg) ![Status pemeliharaan](https://ci-apps.yunohost.org/ci/badges/sharkey.maintain.svg)
+[![Tingkat integrasi](https://apps.yunohost.org/badge/integration/sharkey)](https://ci-apps.yunohost.org/ci/apps/sharkey/)
+![Status kerja](https://apps.yunohost.org/badge/state/sharkey)
+![Status pemeliharaan](https://apps.yunohost.org/badge/maintained/sharkey)
 
 [![Pasang Sharkey dengan YunoHost](https://install-app.yunohost.org/install-with-yunohost.svg)](https://install-app.yunohost.org/?app=sharkey)
 
