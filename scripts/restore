@@ -36,12 +36,12 @@ ynh_install_nodejs --nodejs_version=$NODEJS_VERSION
 ynh_script_progression --message="Reinstalling PNPM..." --weight=1
 
 # Define and install pnpm
-pushd "$install_dir"	
-	ynh_use_nodejs
-	env $ynh_node_load_PATH corepack enable
-	env $ynh_node_load_PATH COREPACK_ENABLE_DOWNLOAD_PROMPT=0 corepack prepare pnpm@latest --activate
-	ynh_exec_warn_less ynh_exec_as $app env $ynh_node_load_PATH pnpm install --frozen-lockfile
-	ynh_exec_warn_less ynh_exec_as $app env $ynh_node_load_PATH NODE_ENV=production pnpm build
+
+pushd "$install_dir"
+	ynh_hide_warnings corepack enable && corepack prepare pnpm@latest --activate
+	ynh_hide_warnings ynh_exec_as_app COREPACK_ENABLE_DOWNLOAD_PROMPT=0 pnpm install --frozen-lockfile
+	ynh_hide_warnings ynh_exec_as_app NODE_ENV=production pnpm build
+	ynh_hide_warnings ynh_exec_as_app pnpm run init
 popd
 
 #=================================================
