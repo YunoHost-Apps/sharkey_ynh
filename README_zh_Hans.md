@@ -23,7 +23,7 @@
 _Sharkey_ is an Misskey fork following upstream changes when possible, with added features!
 
 
-**分发版本：** 2024.9.4~ynh1
+**分发版本：** 2024.9.4~ynh2
 
 ## 截图
 
