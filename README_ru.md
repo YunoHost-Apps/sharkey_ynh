@@ -23,7 +23,7 @@
 _Sharkey_ is an Misskey fork following upstream changes when possible, with added features!
 
 
-**Поставляемая версия:** 2024.9.4~ynh2
+**Поставляемая версия:** 2024.11.1~ynh1
 
 ## Снимки экрана
 
