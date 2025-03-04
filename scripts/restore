@@ -62,6 +62,8 @@ ynh_restore "/etc/systemd/system/$app.service"
 systemctl enable "$app.service" --quiet
 yunohost service add "$app" --description="A interplanetary blogging platform" --log="/var/log/$app/$app.log"
 
+mkdir -p "/var/log/$app"
+chmod 750 "/var/log/$app"
 ynh_restore "/etc/logrotate.d/$app"
 
 #=================================================
