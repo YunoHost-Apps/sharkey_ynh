@@ -1,13 +1,21 @@
+#:schema https://raw.githubusercontent.com/YunoHost/apps/master/schemas/tests.v1.schema.json
+
 test_format = 1.0
 
 [default]
+
+    # ------------
+    # Tests to run
+    # ------------
+
+    exclude = ["change_url"]
 
     # -------------------------------
     # Default args to use for install
     # -------------------------------
 
-      exclude = ["change_url"]
-
     # -------------------------------
     # Commits to test upgrade from
     # -------------------------------
+
+    test_upgrade_from.6072e9baaf83b91dd9f5b127b8c15ba2d8835853.name = "Upgrade from 2024.11.2~ynh1"

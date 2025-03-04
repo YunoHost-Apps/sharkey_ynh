@@ -1,5 +1,9 @@
 #!/bin/bash
 
+#=================================================
+# IMPORT GENERIC HELPERS
+#=================================================
+
 source _common.sh
 source /usr/share/yunohost/helpers
 
@@ -8,7 +12,12 @@ source /usr/share/yunohost/helpers
 #=================================================
 ynh_script_progression "Stopping $app's systemd service..."
 
-ynh_systemctl --service=$app --action="stop" --log_path=systemd
+ynh_systemctl --service="$app" --action="stop" --log_path=systemd
+
+#=================================================
+# ENSURE DOWNWARD COMPATIBILITY
+#=================================================
+ynh_script_progression "Ensuring downward compatibility..."
 
 #=================================================
 # DOWNLOAD, CHECK AND UNPACK SOURCE
@@ -42,32 +51,32 @@ ynh_nodejs_install
 ynh_script_progression "Building app..."
 
 pushd "$install_dir"
-    ynh_hide_warnings npm install --global corepack@latest
-    ynh_hide_warnings corepack enable && corepack prepare pnpm@latest --activate
-    ynh_hide_warnings  ynh_exec_as_app COREPACK_ENABLE_DOWNLOAD_PROMPT=0 NODE_OPTIONS="--max-old-space-size=3000" pnpm install --frozen-lockfile
-    ynh_hide_warnings  ynh_exec_as_app NODE_ENV=production NODE_OPTIONS="--max-old-space-size=3000" pnpm build
-    ynh_hide_warnings  ynh_exec_as_app pnpm migrate
+	ynh_hide_warnings npm install --global corepack@latest
+	ynh_hide_warnings corepack enable
+	ynh_hide_warnings corepack prepare pnpm@latest --activate
+	ynh_hide_warnings ynh_exec_as_app COREPACK_ENABLE_DOWNLOAD_PROMPT=0 NODE_OPTIONS="--max-old-space-size=3000" pnpm install --frozen-lockfile
+	ynh_hide_warnings ynh_exec_as_app NODE_ENV=production NODE_OPTIONS="--max-old-space-size=3000" pnpm build
+	ynh_hide_warnings ynh_exec_as_app pnpm migrate
 popd
 
 #=================================================
-# SETUP SYSTEMD
+# REAPPLY SYSTEM CONFIGURATIONS
 #=================================================
-ynh_script_progression "Upgrading systemd configuration..."
+ynh_script_progression "Upgrading system configurations related to $app..."
 
 ynh_config_add_nginx
 
 ynh_config_add_systemd
+yunohost service add "$app" --description="A interplanetary blogging platform" --log="/var/log/$app/$app.log"
 
 ynh_config_add_logrotate
-
-yunohost service add $app --description="A interplanetary blogging platform" --log="/var/log/$app/$app.log"
 
 #=================================================
 # START SYSTEMD SERVICE
 #=================================================
 ynh_script_progression "Starting $app's systemd service..."
 
-ynh_systemctl --service=$app --action="start" --log_path=systemd
+ynh_systemctl --service="$app" --action="start" --log_path="/var/log/$app/$app.log"
 
 #=================================================
 # END OF SCRIPT

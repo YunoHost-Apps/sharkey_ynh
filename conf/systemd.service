@@ -11,11 +11,9 @@ Environment="PATH=__PATH_WITH_NODEJS__"
 Environment="NODE_OPTIONS=--max-old-space-size=8192"
 Environment="NODE_ENV=production"
 ExecStart=__NODEJS_DIR__/pnpm start
-TimeoutSec=60
-Restart=always
+StandardOutput=append:/var/log/__APP__/__APP__.log
+StandardError=inherit
 
-### Depending on specificities of your service/app, you may need to tweak these
-### .. but this should be a good baseline
 # Sandboxing options to harden security
 # Details for these options: https://www.freedesktop.org/software/systemd/man/systemd.exec.html
 NoNewPrivileges=yes
