@@ -5,7 +5,7 @@ name = "Sharkey"
 description.en = "Microblogging platform"
 description.fr = "Platforme de Microblogging"
 
-version = "2024.11.2~ynh1"
+version = "2024.11.2~ynh2"
 
 maintainers = ["oufmilo"]
 
