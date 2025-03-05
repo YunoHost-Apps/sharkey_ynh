@@ -55,7 +55,7 @@ ram.runtime = "50M"
     main.url = "/"
 
     [resources.apt]
-    packages ="ffmpeg, postgresql, git, build-essential, redis-server"
+    packages ="ffmpeg, postgresql, git, build-essential, redis-server, pkg-config"
 
     [resources.database]
     type = "postgresql"
