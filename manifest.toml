@@ -1,3 +1,5 @@
+#:schema https://raw.githubusercontent.com/YunoHost/apps/master/schemas/manifest.v2.schema.json
+
 packaging_format = 2
 
 id = "sharkey"
@@ -5,7 +7,7 @@ name = "Sharkey"
 description.en = "Microblogging platform"
 description.fr = "Platforme de Microblogging"
 
-version = "2024.11.2~ynh2"
+version = "2025.2.2~ynh1"
 
 maintainers = ["oufmilo"]
 
@@ -21,6 +23,7 @@ architectures = "all"
 multi_instance = false
 
 ldap = false
+
 sso = false
 
 disk = "50M"
@@ -40,12 +43,10 @@ ram.runtime = "50M"
 [resources]
 
     [resources.sources.main]
-    url = "https://activitypub.software/TransFem-org/Sharkey/-/archive/2024.11.2/Sharkey-2024.11.2.tar.bz2"
-    sha256 = "c3c02cf8458481ef8a7eb60f56b24b4e3dd51b230541e17dc11d1a2beb481792"
+    url = "https://activitypub.software/TransFem-org/Sharkey/-/archive/2025.2.2/Sharkey-2025.2.2.tar.bz2"
+    sha256 = "9b1bde4c8cb7e028fd72f24df21e5eb93cee387a67e67751829cc5c911dcce26"
 
     autoupdate.strategy = "latest_gitlab_release"
-
-    [resources.ports]
 
     [resources.system_user]
 
@@ -54,8 +55,10 @@ ram.runtime = "50M"
     [resources.permissions]
     main.url = "/"
 
+    [resources.ports]
+
     [resources.apt]
-    packages ="ffmpeg, postgresql, git, build-essential, redis-server, pkg-config"
+    packages = "ffmpeg, postgresql, git, build-essential, redis-server, pkg-config, libpango1.0-dev, libcairo2-dev, libpixman-1-dev"
 
     [resources.database]
     type = "postgresql"
