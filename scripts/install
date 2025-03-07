@@ -1,14 +1,11 @@
 #!/bin/bash
 
+#=================================================
+# IMPORT GENERIC HELPERS
+#=================================================
+
 source _common.sh
 source /usr/share/yunohost/helpers
-
-#=================================================
-# INSTALL DEPENDENCIES
-#=================================================
-ynh_script_progression "Installing dependencies..."
-
-ynh_nodejs_install
 
 #=================================================
 # DOWNLOAD, CHECK AND UNPACK SOURCE
@@ -24,9 +21,9 @@ chmod -R o-rwx "$install_dir"
 chown -R $app:www-data "$install_dir"
 
 #=================================================
-# ADD A CONFIGURATION
+# APP INITIAL CONFIGURATION
 #=================================================
-ynh_script_progression "Adding $app's configuration..."
+ynh_script_progression "Adding $app's configuration files..."
 
 # Configure redis
 redis_db=$(ynh_redis_get_free_db)
@@ -35,37 +32,48 @@ ynh_app_setting_set --key=redis_db --value="$redis_db"
 ynh_config_add --template="default.yml" --destination="$install_dir/.config/default.yml"
 
 #=================================================
+# INSTALL DEPENDENCIES
+#=================================================
+ynh_script_progression "Installing dependencies..."
+
+ynh_nodejs_install
+
+#=================================================
 # BUILD APP
 #=================================================
 ynh_script_progression "Building $app..."
 
 pushd "$install_dir"
 	ynh_hide_warnings npm install --global corepack@latest
-	ynh_hide_warnings corepack enable && corepack prepare pnpm@latest --activate
+	ynh_hide_warnings corepack enable
+	ynh_hide_warnings corepack prepare pnpm@latest --activate
 	ynh_hide_warnings ynh_exec_as_app COREPACK_ENABLE_DOWNLOAD_PROMPT=0 NODE_OPTIONS="--max-old-space-size=3000" pnpm install --frozen-lockfile
 	ynh_hide_warnings ynh_exec_as_app NODE_ENV=production NODE_OPTIONS="--max-old-space-size=3000" pnpm build
 	ynh_hide_warnings ynh_exec_as_app pnpm run init
 popd
 
 #=================================================
-# SETUP SYSTEMD
+# SYSTEM CONFIGURATION
 #=================================================
-ynh_script_progression "Configuring $app's systemd service..."
+ynh_script_progression "Adding system configurations related to $app..."
 
+# Create a dedicated NGINX config using the conf/nginx.conf template
 ynh_config_add_nginx
 
+# Create a dedicated systemd config
 ynh_config_add_systemd
+yunohost service add "$app" --description="A interplanetary blogging platform" --log="/var/log/$app/$app.log"
 
+# Use logrotate to manage application logfile(s)
 ynh_config_add_logrotate
-
-yunohost service add $app --description="A interplanetary blogging platform" --log="/var/log/$app/$app.log"
 
 #=================================================
 # START SYSTEMD SERVICE
 #=================================================
 ynh_script_progression "Starting $app's systemd service..."
 
-ynh_systemctl --service=$app --action="start" --log_path=systemd
+# Start a systemd service
+ynh_systemctl --service="$app" --action="start" --wait_until="listening on" --log_path="/var/log/$app/$app.log"
 
 #=================================================
 # END OF SCRIPT
