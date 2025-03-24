@@ -23,7 +23,7 @@ Nie powinno być ono edytowane ręcznie.
 _Sharkey_ is an Misskey fork following upstream changes when possible, with added features!
 
 
-**Dostarczona wersja:** 2025.2.2~ynh1
+**Dostarczona wersja:** 2025.2.2~ynh2
 
 ## Zrzuty ekranu
 
