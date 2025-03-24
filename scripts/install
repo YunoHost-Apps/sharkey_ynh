@@ -8,14 +8,16 @@ source _common.sh
 source /usr/share/yunohost/helpers
 
 #=================================================
+# INITIALIZE AND STORE SETTINGS
+#=================================================
+
+#=================================================
 # DOWNLOAD, CHECK AND UNPACK SOURCE
 #=================================================
 ynh_script_progression "Setting up source files..."
 
-mkdir -p "$install_dir"
-chown -R $app:www-data "$install_dir"
-
-ynh_hide_warnings git clone --recurse-submodules -b stable https://activitypub.software/TransFem-org/Sharkey.git "$install_dir"
+# Download, check integrity, uncompress and patch the source from manifest.toml
+ynh_setup_source --dest_dir="$install_dir"
 
 chmod -R o-rwx "$install_dir"
 chown -R $app:www-data "$install_dir"
@@ -38,15 +40,18 @@ ynh_script_progression "Installing dependencies..."
 
 ynh_nodejs_install
 
+pushd "$install_dir"
+	ynh_hide_warnings npm install --global corepack@latest
+	ynh_hide_warnings corepack enable
+	ynh_hide_warnings corepack prepare pnpm@latest --activate
+popd
+
 #=================================================
 # BUILD APP
 #=================================================
 ynh_script_progression "Building $app..."
 
 pushd "$install_dir"
-	ynh_hide_warnings npm install --global corepack@latest
-	ynh_hide_warnings corepack enable
-	ynh_hide_warnings corepack prepare pnpm@latest --activate
 	ynh_hide_warnings ynh_exec_as_app COREPACK_ENABLE_DOWNLOAD_PROMPT=0 NODE_OPTIONS="--max-old-space-size=3000" pnpm install --frozen-lockfile
 	ynh_hide_warnings ynh_exec_as_app NODE_ENV=production NODE_OPTIONS="--max-old-space-size=3000" pnpm build
 	ynh_hide_warnings ynh_exec_as_app pnpm run init

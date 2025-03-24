@@ -24,15 +24,8 @@ ynh_script_progression "Ensuring downward compatibility..."
 #=================================================
 ynh_script_progression "Upgrading source files..."
 
-pushd $install_dir
-	chown -R $app:www-data "$install_dir"
-	ynh_hide_warnings ynh_exec_as_app git config --global --add safe.directory "$install_dir"
-	ynh_hide_warnings ynh_exec_as_app git config --global --add safe.directory "$install_dir/fluent-emojis"
-	ynh_hide_warnings ynh_exec_as_app git config --global --add safe.directory "$install_dir/misskey-assets"
-	ynh_hide_warnings ynh_exec_as_app git config --global --add safe.directory "$install_dir/tossface-emojis"
-	ynh_hide_warnings ynh_exec_as_app git checkout stable
-	ynh_hide_warnings ynh_exec_as_app git pull --recurse-submodules
-popd
+# Download, check integrity, uncompress and patch the source from manifest.toml
+ynh_setup_source --dest_dir="$install_dir" --full_replace --keep=".config/default.yml"
 
 chmod 750 "$install_dir"
 chmod -R o-rwx "$install_dir"
@@ -45,22 +38,25 @@ ynh_script_progression "Upgrading dependencies..."
 
 ynh_nodejs_install
 
+pushd "$install_dir"
+	ynh_hide_warnings npm install --global corepack@latest
+	ynh_hide_warnings corepack enable
+	ynh_hide_warnings corepack prepare pnpm@latest --activate
+popd
+
 #=================================================
 # BUILD APP
 #=================================================
 ynh_script_progression "Building app..."
 
 pushd "$install_dir"
-	ynh_hide_warnings npm install --global corepack@latest
-	ynh_hide_warnings corepack enable
-	ynh_hide_warnings corepack prepare pnpm@latest --activate
 	ynh_hide_warnings ynh_exec_as_app COREPACK_ENABLE_DOWNLOAD_PROMPT=0 NODE_OPTIONS="--max-old-space-size=3000" pnpm install --frozen-lockfile
 	ynh_hide_warnings ynh_exec_as_app NODE_ENV=production NODE_OPTIONS="--max-old-space-size=3000" pnpm build
 	ynh_hide_warnings ynh_exec_as_app pnpm migrate
 popd
 
 #=================================================
-# REAPPLY SYSTEM CONFIGURATIONS
+# REAPPLY SYSTEM CONFIGURATION
 #=================================================
 ynh_script_progression "Upgrading system configurations related to $app..."
 
