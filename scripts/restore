@@ -40,7 +40,7 @@ ynh_script_progression "Reinstalling PNPM..."
 pushd "$install_dir"
 	ynh_hide_warnings npm install --global corepack@latest
 	ynh_hide_warnings corepack enable && corepack prepare pnpm@latest --activate
-	ynh_hide_warnings ynh_exec_as_app NODE_ENV=production CYPRESS_INSTALL_BINARY=0 NODE_OPTIONS="--max-old-space-size=3000" pnpm install --frozen-lockfile --aggregate-output
+	ynh_hide_warnings ynh_exec_as_app NODE_ENV=production CYPRESS_INSTALL_BINARY=0 NODE_OPTIONS="--max-old-space-size=3000" pnpm install --frozen-lockfile
     ynh_hide_warnings ynh_exec_as_app NODE_ENV=production CYPRESS_INSTALL_BINARY=0 NODE_OPTIONS="--max-old-space-size=3000" pnpm build
 	ynh_hide_warnings ynh_exec_as_app pnpm run init
 
