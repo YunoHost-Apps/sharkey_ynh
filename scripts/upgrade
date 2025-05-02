@@ -53,7 +53,8 @@ ynh_script_progression "Building app..."
 pushd "$install_dir"
         if ynh_app_upgrading_from_version_before 2025.2.3~ynh1
         then
-        ynh_safe_rm node_modules pnpm-lock.yaml
+        ynh_safe_rm node_modules
+        ynh_safe_rm pnpm-lock.yaml
         fi
 	corepack enable
     export CYPRESS_INSTALL_BINARY=0
