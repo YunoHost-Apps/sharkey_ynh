@@ -7,7 +7,7 @@ name = "Sharkey"
 description.en = "Microblogging platform"
 description.fr = "Platforme de Microblogging"
 
-version = "2025.2.3~ynh1"
+version = "2025.4.2~ynh1"
 
 maintainers = ["oufmilo"]
 
@@ -35,16 +35,16 @@ ram.runtime = "50M"
     type = "domain"
 
     [install.init_main_permission]
-    help.en = "If enabled, Misskey will be accessible by people who do not have an account. This can be changed later via the webadmin."
-    help.fr = "Si cette case est cochée, Misskey sera accessible aux personnes n’ayant pas de compte. Vous pourrez changer ceci plus tard via la webadmin."
+    help.en = "If enabled, Sharkey will be accessible by people who do not have an account. This can be changed later via the webadmin."
+    help.fr = "Si cette case est cochée, Sharkey sera accessible aux personnes n’ayant pas de compte. Vous pourrez changer ceci plus tard via la webadmin."
     type = "group"
     default = "visitors"
 
 [resources]
 
     [resources.sources.main]
-    url = "https://activitypub.software/TransFem-org/Sharkey/-/archive/2025.2.3/Sharkey-2025.2.3.tar.bz2"
-    sha256 = "b9c1959ae2709d82c6d4ace68d61758d8cde073700d43ab88ab667747fa95b1f"
+    url = "https://activitypub.software/TransFem-org/Sharkey/-/archive/2025.4.2/Sharkey-2025.4.2.tar.bz2"
+    sha256 = "2fc0dc7060d484a96a483a1464f7191686e054eb9c68e30bc01190bf188fd993"
 
     autoupdate.strategy = "latest_gitlab_release"
 
