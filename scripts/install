@@ -20,12 +20,12 @@ ynh_nodejs_install
 ynh_script_progression "Setting up source files..."
 
 mkdir -p "$install_dir"
-chown -R $app:$app "$install_dir"
+chown -R $app:www-data "$install_dir"
 
 ynh_hide_warnings git clone --recurse-submodules -b stable https://activitypub.software/TransFem-org/Sharkey.git "$install_dir"
 
 chmod -R o-rwx "$install_dir"
-chown -R $app:$app "$install_dir"
+chown -R $app:www-data "$install_dir"
 
 #=================================================
 # APP INITIAL CONFIGURATION
