@@ -15,6 +15,13 @@ ynh_script_progression "Stopping $app's systemd service..."
 ynh_systemctl --service="$app" --action="stop" --log_path="/var/log/$app/$app.log"
 
 #=================================================
+# UPGRADE DEPENDENCIES
+#=================================================
+ynh_script_progression "Upgrading dependencies..."
+
+ynh_nodejs_install
+
+#=================================================
 # DOWNLOAD, CHECK AND UNPACK SOURCE
 #=================================================
 ynh_script_progression "Upgrading source files..."
@@ -27,13 +34,6 @@ pushd $install_dir
 	ynh_hide_warnings ynh_exec_as_app git checkout stable
 	ynh_hide_warnings ynh_exec_as_app git pull --recurse-submodules
 popd
-
-#=================================================
-# UPGRADE DEPENDENCIES
-#=================================================
-ynh_script_progression "Upgrading dependencies..."
-
-ynh_nodejs_install
 
 #=================================================
 # BUILD APP
