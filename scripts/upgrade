@@ -12,12 +12,7 @@ source /usr/share/yunohost/helpers
 #=================================================
 ynh_script_progression "Stopping $app's systemd service..."
 
-ynh_systemctl --service="$app" --action="stop" --log_path=systemd
-
-#=================================================
-# ENSURE DOWNWARD COMPATIBILITY
-#=================================================
-ynh_script_progression "Ensuring downward compatibility..."
+ynh_systemctl --service="$app" --action="stop" --log_path="/var/log/$app/$app.log"
 
 #=================================================
 # DOWNLOAD, CHECK AND UNPACK SOURCE
@@ -25,7 +20,6 @@ ynh_script_progression "Ensuring downward compatibility..."
 ynh_script_progression "Upgrading source files..."
 
 pushd $install_dir
-	chown -R $app:www-data "$install_dir"
 	ynh_hide_warnings ynh_exec_as_app git config --global --add safe.directory "$install_dir"
 	ynh_hide_warnings ynh_exec_as_app git config --global --add safe.directory "$install_dir/fluent-emojis"
 	ynh_hide_warnings ynh_exec_as_app git config --global --add safe.directory "$install_dir/misskey-assets"
@@ -33,10 +27,6 @@ pushd $install_dir
 	ynh_hide_warnings ynh_exec_as_app git checkout stable
 	ynh_hide_warnings ynh_exec_as_app git pull --recurse-submodules
 popd
-
-chmod 750 "$install_dir"
-chmod -R o-rwx "$install_dir"
-chown -R $app:www-data "$install_dir"
 
 #=================================================
 # UPGRADE DEPENDENCIES
@@ -77,7 +67,7 @@ ynh_script_progression "Upgrading system configurations related to $app..."
 ynh_config_add_nginx
 
 ynh_config_add_systemd
-yunohost service add "$app" --description="A interplanetary blogging platform" --log="/var/log/$app/$app.log"
+yunohost service add "$app" --description="Interplanetary blogging platform" --log="/var/log/$app/$app.log"
 
 ynh_config_add_logrotate
 
@@ -86,7 +76,7 @@ ynh_config_add_logrotate
 #=================================================
 ynh_script_progression "Starting $app's systemd service..."
 
-ynh_systemctl --service="$app" --action="start" --wait_until="listening on" --log_path="/var/log/$app/$app.log"
+ynh_systemctl --service="$app" --action="start" --log_path="/var/log/$app/$app.log"
 
 #=================================================
 # END OF SCRIPT
