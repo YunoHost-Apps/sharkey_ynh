@@ -57,7 +57,7 @@ ram.runtime = "50M"
     [resources.ports]
 
     [resources.apt]
-    packages = "ffmpeg, postgresql, git, build-essential, redis-server, pkg-config, libpango1.0-dev, libcairo2-dev, libpixman-1-dev"
+    packages = "ffmpeg, postgresql, git, build-essential, redis-server, pkg-config, libpango1.0-dev, libcairo2-dev, libpixman-1-dev, librsvg2-2, fonts-noto"
 
     [resources.database]
     type = "postgresql"
