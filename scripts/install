@@ -39,9 +39,9 @@ ynh_config_add --template="default.yml" --destination="$install_dir/.config/defa
 ynh_script_progression "Building $app..."
 
 #pushd "$install_dir"
-#    ynh_hide_warnings ynh_exec_as_app pnpm install --frozen-lockfile
-#    ynh_hide_warnings ynh_exec_as_app pnpm run build
-#    ynh_hide_warnings ynh_exec_as_app pnpm run init
+#    ynh_hide_warnings ynh_exec_as_app NODE_ENV=production pnpm install --frozen-lockfile
+#    ynh_hide_warnings ynh_exec_as_app NODE_ENV=production pnpm run build
+#    ynh_hide_warnings ynh_exec_as_app NODE_ENV=production pnpm run init
 #popd
 
 pushd "$install_dir"
