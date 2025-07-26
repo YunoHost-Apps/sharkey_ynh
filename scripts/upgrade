@@ -27,14 +27,7 @@ ynh_hide_warnings corepack enable && corepack prepare pnpm@latest --activate
 #=================================================
 ynh_script_progression "Upgrading source files..."
 
-pushd $install_dir
-	ynh_hide_warnings ynh_exec_as_app git config --global --add safe.directory "$install_dir"
-	ynh_hide_warnings ynh_exec_as_app git config --global --add safe.directory "$install_dir/fluent-emojis"
-	ynh_hide_warnings ynh_exec_as_app git config --global --add safe.directory "$install_dir/misskey-assets"
-	ynh_hide_warnings ynh_exec_as_app git config --global --add safe.directory "$install_dir/tossface-emojis"
-	ynh_hide_warnings ynh_exec_as_app git checkout stable
-	ynh_hide_warnings ynh_exec_as_app git pull --recurse-submodules
-popd
+ynh_setup_source --dest_dir="$install_dir"
 
 #=================================================
 # BUILD APP
