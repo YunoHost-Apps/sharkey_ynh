@@ -20,6 +20,7 @@ ynh_systemctl --service="$app" --action="stop" --log_path="/var/log/$app/$app.lo
 ynh_script_progression "Upgrading dependencies..."
 
 ynh_nodejs_install
+ynh_hide_warnings corepack enable && corepack prepare pnpm@latest --activate
 
 #=================================================
 # DOWNLOAD, CHECK AND UNPACK SOURCE
@@ -46,7 +47,6 @@ pushd "$install_dir"
         ynh_safe_rm node_modules
         ynh_safe_rm pnpm-lock.yaml
         fi
-	corepack enable
     export CYPRESS_INSTALL_BINARY=0
     ynh_hide_warnings npm install -g corepack@latest
     ynh_hide_warnings ynh_exec_as_app NODE_ENV=production CYPRESS_INSTALL_BINARY=0 NODE_OPTIONS="--max-old-space-size=3000" pnpm add jest-worker -w
