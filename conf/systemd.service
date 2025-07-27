@@ -13,6 +13,7 @@ Environment="NODE_ENV=production"
 ExecStart=__NODEJS_DIR__/pnpm start
 StandardOutput=append:/var/log/__APP__/__APP__.log
 StandardError=inherit
+Restart=always
 
 # Sandboxing options to harden security
 # Details for these options: https://www.freedesktop.org/software/systemd/man/systemd.exec.html
