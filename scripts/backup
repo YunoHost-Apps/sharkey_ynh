@@ -1,9 +1,5 @@
 #!/bin/bash
 
-#=================================================
-# IMPORT GENERIC HELPERS
-#=================================================
-
 # Keep this path for calling _common.sh inside the execution's context of backup and restore scripts
 source ../settings/scripts/_common.sh
 source /usr/share/yunohost/helpers
@@ -28,6 +24,13 @@ ynh_backup "/etc/systemd/system/$app.service"
 
 # Backup the logrotate configuration
 ynh_backup "/etc/logrotate.d/$app"
+
+#=================================================
+# BACKUP VARIOUS FILES
+#=================================================
+
+# NB: /var/log is not backuped during safety-backup-before-upgrades, same as $data_dir
+ynh_backup "/var/log/$app/"
 
 #=================================================
 # BACKUP THE POSTGRESQL DATABASE

@@ -7,7 +7,7 @@ name = "Sharkey"
 description.en = "Microblogging platform"
 description.fr = "Platforme de Microblogging"
 
-version = "2025.4.2~ynh1"
+version = "2025.4.3~ynh1"
 
 maintainers = ["oufmilo"]
 
@@ -23,7 +23,6 @@ architectures = "all"
 multi_instance = false
 
 ldap = false
-
 sso = false
 
 disk = "50M"
@@ -43,10 +42,17 @@ ram.runtime = "50M"
 [resources]
 
     [resources.sources.main]
-    url = "https://activitypub.software/TransFem-org/Sharkey/-/archive/2025.4.2/Sharkey-2025.4.2.tar.bz2"
-    sha256 = "2fc0dc7060d484a96a483a1464f7191686e054eb9c68e30bc01190bf188fd993"
-
+    url = "https://activitypub.software/TransFem-org/Sharkey/-/archive/2025.4.3/Sharkey-2025.4.3.tar.gz"
+    sha256 = "bbd5dc70bceb67fb7c14b781913f2d7b170832628ad293b562c68c57be370875"
     autoupdate.strategy = "latest_gitlab_release"
+
+    [resources.sources.fluent-emojis]
+    url = "https://github.com/misskey-dev/emojis/archive/cae981eb4c5189ea9ea3230e83b876a5068df7d1.zip"
+    sha256 = "f94e653fa13c39974bf76ead82844a6ef967adf8443274f903b416793bbfc0fc"
+
+    [resources.sources.tossface-emojis]
+    url = "https://activitypub.software/TransFem-org/tossface-emojis/-/archive/3c0ac3f7bdd794cc334363bf834e58079ca00dd2/tossface-emojis-3c0ac3f7bdd794cc334363bf834e58079ca00dd2.zip"
+    sha256 = "1612e3aa9bd7030f62b8262da5a4da62134f9dac3c668704efca9c4b23c5721f"
 
     [resources.system_user]
 
@@ -58,7 +64,7 @@ ram.runtime = "50M"
     [resources.ports]
 
     [resources.apt]
-    packages = "ffmpeg, postgresql, git, build-essential, redis-server, pkg-config, libpango1.0-dev, libcairo2-dev, libpixman-1-dev"
+    packages = "ffmpeg, postgresql, git, build-essential, redis-server, pkg-config, libpango1.0-dev, libcairo2-dev, libpixman-1-dev, librsvg2-2, fonts-noto"
 
     [resources.database]
     type = "postgresql"
