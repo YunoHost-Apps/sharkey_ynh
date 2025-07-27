@@ -63,7 +63,7 @@ ynh_script_progression "Upgrading system configurations related to $app..."
 ynh_config_add_nginx
 
 ynh_config_add_systemd
-yunohost service add "$app" --description="Interplanetary blogging platform" --log="/var/log/$app/$app.log"
+yunohost service add "$app" --description="Interplanetary blogging platform" --log="/var/log/$app/$app.log" --wait_until="Now listening"
 
 ynh_config_add_logrotate
 
