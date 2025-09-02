@@ -17,7 +17,7 @@ website = "https://git.joinsharkey.org/Sharkey"
 code = "https://activitypub.software/TransFem-org/Sharkey"
 
 [integration]
-yunohost = ">= 12.0.9"
+yunohost = ">= 12.1.17"
 helpers_version = "2.1"
 architectures = "all"
 multi_instance = false
@@ -68,3 +68,6 @@ ram.runtime = "50M"
 
     [resources.database]
     type = "postgresql"
+
+    [resources.nodejs]
+    version = "22"
