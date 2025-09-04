@@ -51,8 +51,8 @@ ram.runtime = "50M"
     sha256 = "f94e653fa13c39974bf76ead82844a6ef967adf8443274f903b416793bbfc0fc"
 
     [resources.sources.tossface-emojis]
-    url = "https://activitypub.software/TransFem-org/tossface-emojis/-/archive/3c0ac3f7bdd794cc334363bf834e58079ca00dd2/tossface-emojis-3c0ac3f7bdd794cc334363bf834e58079ca00dd2.zip"
-    sha256 = "1612e3aa9bd7030f62b8262da5a4da62134f9dac3c668704efca9c4b23c5721f"
+    url = "https://activitypub.software/TransFem-org/tossface-emojis/-/archive/444a15c3e1aca175039660f2cd16981a017856fd/tossface-emojis-444a15c3e1aca175039660f2cd16981a017856fd.tar.gz"
+    sha256 = "621295c8a2b7b6f0ccf162241353d8444941c09a31bc22c0f15165b04e9e5397"
 
     [resources.system_user]
 
