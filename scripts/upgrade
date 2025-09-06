@@ -19,7 +19,6 @@ ynh_systemctl --service="$app" --action="stop" --log_path="/var/log/$app/$app.lo
 #=================================================
 ynh_script_progression "Upgrading dependencies..."
 
-#REMOVEME? ynh_nodejs_install
 ynh_hide_warnings corepack enable && corepack prepare pnpm@latest --activate
 
 #=================================================
